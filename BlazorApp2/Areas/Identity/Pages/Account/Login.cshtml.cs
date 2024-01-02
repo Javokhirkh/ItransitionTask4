@@ -127,6 +127,9 @@ namespace BlazorApp2.Areas.Identity.Pages.Account
                     _context.Users.Update(user);
                     await _context.SaveChangesAsync();
                     
+                    await _signInManager.SignInAsync(user, Input.RememberMe);
+
+                    
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }
